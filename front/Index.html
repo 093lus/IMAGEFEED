@@ -1,0 +1,141 @@
+<html>
+<header>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <script type="text/javascript" src="./index.js"></script>
+</header>
+
+<body>
+    <div id='contentArea'>
+        <h1 align='center'> Image data feed </h1>
+        <div align='center'>
+            <!-- add new image modal HTML -->
+            <div id="upl" class="modal">
+                <h2>
+                    <p>Add new image.</p>
+                </h2>
+                <form id='frmNewImage'>
+                    Title:<br>
+                    <input type="text" id="title" name="title">
+                    <br> <br>
+                    Description:<br>
+                    <input type="text" multiline id="description" name="description">
+                    <br> <br>
+                    Image:<br>
+                    <input type="file" id="image" name="file">
+                    <br><br>
+                    <input id="submitNewImage" type="button" value="Add">
+                </form>
+            </div>
+
+            <p></p><a href="#upl" rel="modal:open">Add new image</a></p>
+        </div>
+
+        <div>
+            <div class="wrapper">
+            </div>
+        </div>
+        <div align='center'>
+            <p></p><button onclick="performLoad()">Show more</button></p>
+        </div>
+    </div>
+    <!--<script>-->
+        <!--var page = 1, count = 5-->
+        <!--window.onscroll = scrollFunction;-->
+        <!--function scrollFunction() {-->
+            <!--if (document.body.clientHeight + document.body.scrollTop >= document.body.scrollHeight) {-->
+                <!--setTimeout(function () {-->
+                    <!--performLoad();-->
+                <!--}, 1000);-->
+            <!--}-->
+        <!--}-->
+
+        <!--function changeLike(e){-->
+           <!--var id=$(e.target).attr('id');-->
+           <!--id=id.substring(3,id.length);-->
+           <!---->
+            <!--$.ajax({-->
+                 <!--type: 'PUT',-->
+                 <!--url: 'http://localhost:8000/api/feed/',-->
+                 <!--data: id,-->
+                 <!--success: function (data) {  $(e.target).html($(e.target).html()=='Unlike'?'Like':'Unlike'); },-->
+                 <!--contentType: "multipart/form-data; boundary=63c5979328c44e2c869349443a94200e ",-->
+             <!--});-->
+        <!---->
+       <!---->
+
+        <!--}-->
+        <!---->
+        <!--function appendItem(item){-->
+            <!--$('.wrapper').append(-->
+                        <!---->
+                        <!--"<div class='box'>" + item.title + "  <br> <img width=160px src='" + 'http://localhost:49789' + item.image + -->
+                            <!--"'alt='Italian Trulli'>  <button style='margin-left:30%' onclick='changeLike(event)' id='img"+item.id+"'>"+(item.liked?"Unlike":"Like")+"</button> <br> <br>" + item.description + "</div>"-->
+                    <!--)-->
+        <!--}-->
+        <!---->
+        <!--function performLoad() {-->
+
+            <!--var jqxhr = $.getJSON("http://localhost:8000/api/feed/" + page + "/", function (data) {-->
+                <!--data.map(x => {-->
+                  <!--appendItem(x);-->
+                <!--})-->
+            <!--})-->
+                <!--.done(function () {-->
+
+                <!--})-->
+                <!--.fail(function () {-->
+
+                <!--})-->
+                <!--.always(function () {-->
+                    <!--page++;-->
+                <!--});-->
+        <!--};-->
+
+        <!--$(document).ready(function () {-->
+            <!--performLoad()-->
+        <!--})-->
+
+        <!--$('#submitNewImage').click(function (event) {-->
+            <!--var _title = $('#title').val();-->
+            <!--var _description = $('#description').val();-->
+
+            <!--var obj = {-->
+                <!--title: _title,-->
+                <!--description: _description-->
+            <!--}-->
+
+            <!--$.ajax({-->
+                <!--type: 'POST',-->
+                <!--url: 'http://localhost:8000/api/feed/',-->
+                <!--data: obj,-->
+                <!--success: function (data) { appendItem(data) },-->
+                <!--contentType: "multipart/form-data; boundary=63c5979328c44e2c869349443a94200e ",-->
+            <!--});-->
+        <!--})-->
+
+        <!--$('#submitNewImage').click(function (event) {-->
+            <!--var _title = $('#title').val();-->
+            <!--var _description = $('#description').val();-->
+
+            <!--var obj = {-->
+                <!--title: _title,-->
+                <!--description: _description-->
+            <!--}-->
+
+            <!--$.ajax({-->
+                <!--type: 'POST',-->
+                <!--url: 'http://localhost:8000/api/feed/',-->
+                <!--data: obj,-->
+                <!--success: function (data) { alert('data: ' + obj); },-->
+                <!--contentType: "multipart/form-data; boundary=63c5979328c44e2c869349443a94200e ",-->
+            <!--});-->
+        <!--})-->
+
+    <!--</script>-->
+</body>
+
+</html>
