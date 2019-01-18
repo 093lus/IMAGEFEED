@@ -1,0 +1,33 @@
+version: '2'
+services:
+  db:
+    image: mysql:latest
+    volumes:
+      - my-datavolume:/var/lib/mysql
+    entrypoint: ['/entrypoint.sh', '--default-authentication-plugin=mysql_native_password']
+    environment:
+      MYSQL_ROOT_PASSWORD: Qwerty
+      MYSQL_DATABASE: feed
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Qwerty
+  web:
+    build:
+      context: .
+      dockerfile: back_dockerfile
+    hostname: web
+    command: ./run_web.sh
+    ports:
+      - "8000:8000"
+    links:
+      - db:db
+  web-front:
+    build:
+      context: .
+      dockerfile: front_dockerfile
+    hostname: front
+    ports:
+      - '80:80'
+    links:
+      - web:web
+volumes:
+    my-datavolume: {}

@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'feed',
         'USER': 'root',
         'PASSWORD': 'Qwerty',
-        'HOST': 'localhost',
+        'HOST': 'db',
         'PORT': '',
     }
 }

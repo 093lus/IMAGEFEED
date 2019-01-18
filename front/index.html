@@ -1,0 +1,48 @@
+<html>
+<header>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <script type="text/javascript" src="./index.js"></script>
+</header>
+
+<body>
+    <div id='contentArea'>
+        <h1 align='center'> Image data feed </h1>
+        <div align='center'>
+            <!-- add new image modal HTML -->
+            <div id="upl" class="modal">
+                <h2>
+                    <p>Add new image.</p>
+                </h2>
+                <form id='frmNewImage'>
+                    Title:<br>
+                    <input type="text" id="title" name="title">
+                    <br> <br>
+                    Description:<br>
+                    <input type="text" multiline id="description" name="description">
+                    <br> <br>
+                    Image:<br>
+                    <input type="file" id="image" name="file">
+                    <br><br>
+                    <input id="submitNewImage" type="button" value="Add">
+                </form>
+            </div>
+
+            <p></p><a href="#upl" rel="modal:open">Add new image</a></p>
+        </div>
+
+        <div>
+            <div class="wrapper">
+            </div>
+        </div>
+        <div align='center'>
+            <p></p><button onclick="performLoad()">Show more</button></p>
+        </div>
+    </div>
+
+</body>
+
+</html>

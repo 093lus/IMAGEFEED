@@ -1,10 +1,12 @@
 FROM python:3.5
 
 # add requirements.txt to the image
-ADD task/requirements.txt /app/requirements.txt
-ADD ./task/ /app/
+ADD requirements.txt /app/requirements.txt
+ADD run_web.sh /app/run_web.sh
+ADD ./feed/ /app/
 # set working directory to /app/
 WORKDIR /app
+RUN ["chmod", "+x", "/app/run_web.sh"]
 
 # install python dependencies
 RUN pip install -r requirements.txt

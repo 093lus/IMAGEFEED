@@ -2,9 +2,7 @@
         window.onscroll = scrollFunction;
         function scrollFunction() {
             if (document.body.clientHeight + document.body.scrollTop >= document.body.scrollHeight) {
-                setTimeout(function () {
-                    performLoad();
-                }, 1000);
+                performLoad();
             }
         }
 
@@ -23,13 +21,13 @@
 
         }
 
-        function appendItem(item){
-            $('.wrapper').append(
-
-                        "<div class='box'>" + item.title + "  <br> <img width=160px src='" + 'http://localhost:8000' + item.image +
-                            "'alt='Italian Trulli'>  <button style='margin-left:30%' onclick='changeLike(event)' id='img"+item.id+"'>"+(item.status?"Unlike":"Like")+"</button> <br> <br>" + item.description + "</div>"
-                    )
-        }
+//        function appendItem(item){
+//            $('.wrapper').append(
+//
+//                        "<div class='box'>" + item.title + "  <br> <img width=160px src='" + 'http://localhost:8000' + item.image +
+//                            "'alt='Italian Trulli'>  <button style='margin-left:30%' onclick='changeLike(event)' id='img"+item.id+"'>"+(item.status?"Unlike":"Like")+"</button> <br> <br>" + item.description + "</div>"
+//                    )
+//        }
 
         function performLoad() {
 
@@ -52,9 +50,8 @@
         $(document).ready(function () {
 
             performLoad()
-        })
 
-        $('#submitNewImage').click(function (event) {
+     $('#submitNewImage').click(function (event) {
         var form = document.querySelector('form');
     var formData = new FormData(form);
      var other_data = $('form').serializeArray();
@@ -67,9 +64,13 @@
                 url: 'http://localhost:8000/api/feed/',
                 data: formData,
                 success: function (data) { appendItem(data) },
-//                contentType: "multipart/form-data; boundary=63c5979328c44e2c869349443a94200e ",
                 processData: false,
                 contentType: false,
             });
         })
+        })
+
+
+
+
 
