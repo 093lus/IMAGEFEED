@@ -21,13 +21,13 @@
 
         }
 
-//        function appendItem(item){
-//            $('.wrapper').append(
-//
-//                        "<div class='box'>" + item.title + "  <br> <img width=160px src='" + 'http://localhost:8000' + item.image +
-//                            "'alt='Italian Trulli'>  <button style='margin-left:30%' onclick='changeLike(event)' id='img"+item.id+"'>"+(item.status?"Unlike":"Like")+"</button> <br> <br>" + item.description + "</div>"
-//                    )
-//        }
+        function appendItem(item){
+            $('.wrapper').append(
+
+                        "<div class='box'>" + item.title + "  <br> <img width=160px src='" + 'http://localhost:8000' + item.image +
+                            "'alt='Italian Trulli'>  <button style='margin-left:30%' onclick='changeLike(event)' id='img"+item.id+"'>"+(item.status?"Unlike":"Like")+"</button> <br> <br>" + item.description + "</div>"
+                    )
+        }
 
         function performLoad() {
 
