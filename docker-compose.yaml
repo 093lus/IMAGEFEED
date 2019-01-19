@@ -16,6 +16,7 @@ services:
       dockerfile: back_dockerfile
     hostname: web
     command: ./run_web.sh
+    restart: always
     volumes:
       - ./feed/media:/app/media
     ports:

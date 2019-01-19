@@ -40,20 +40,31 @@
         }
 
         function performLoad() {
+
+            $('body').Wload({text:'Loading'})
             $.getJSON(backEndURL+ "/api/feed/?page=" + page , function (data) {
+
+                if(data.length==0){
+                alert('No images to retrieve')
+                }else{
                 data.map(x => {
                   appendItem(x);
-                })
+                })}
+
             })
-                .done(function () {
+
+                .done(function (response) {
 
                 })
-                .fail(function () {
+                .fail(function (response) {
 
                 })
                 .always(function () {
                     page++;
-                });
+                      $('body').Wload('hide',{
+                        time:30
+                      })
+                })
         };
 
         $(document).ready(function () {
