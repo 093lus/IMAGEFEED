@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {'charset': 'utf8mb4'},
         'NAME': 'feed',
-        'USER': 'root',
+        'USER': 'lusine',
         'PASSWORD': 'Qwerty',
         'HOST': 'db',
         'PORT': '',

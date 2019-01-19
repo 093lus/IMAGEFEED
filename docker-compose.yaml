@@ -8,7 +8,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: Qwerty
       MYSQL_DATABASE: feed
-      MYSQL_USER: root
+      MYSQL_USER: lusine
       MYSQL_PASSWORD: Qwerty
   web:
     build:
@@ -21,6 +21,8 @@ services:
       - ./feed/media:/app/media
     ports:
       - "8000:8000"
+    depends_on:
+      - db
     links:
       - db:db
   web-front:

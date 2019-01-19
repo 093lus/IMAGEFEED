@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 10
+sleep 40
 
 # prepare init migration
 python manage.py makemigrations
