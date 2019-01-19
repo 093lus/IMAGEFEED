@@ -16,6 +16,8 @@ services:
       dockerfile: back_dockerfile
     hostname: web
     command: ./run_web.sh
+    volumes:
+      - ./feed/media:/app/media
     ports:
       - "8000:8000"
     links:

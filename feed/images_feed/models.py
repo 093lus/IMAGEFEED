@@ -12,4 +12,4 @@ class Feed(models.Model):
     status = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['id']
+        ordering = ['-id']

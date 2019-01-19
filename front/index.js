@@ -1,4 +1,4 @@
-         var page = 1, count = 5
+         var page = 1, count = 5, backEndURL='http://localhost:8000'
         window.onscroll = scrollFunction;
         function scrollFunction() {
             if (document.body.clientHeight + document.body.scrollTop >= document.body.scrollHeight) {
@@ -12,10 +12,10 @@
 
             $.ajax({
                  type: 'PUT',
-                 url: 'http://localhost:8000/api/feed/',
+                 url: backEndURL+'/api/feed/',
                  data: {id: id},
                  success: function (data) {  $(e.target).html($(e.target).html()=='Unlike'?'Like':'Unlike'); },
-             });
+             }  );
 
 
 
@@ -24,14 +24,23 @@
         function appendItem(item){
             $('.wrapper').append(
 
-                        "<div class='box'>" + item.title + "  <br> <img width=160px src='" + 'http://localhost:8000' + item.image +
-                            "'alt='Italian Trulli'>  <button style='margin-left:30%' onclick='changeLike(event)' id='img"+item.id+"'>"+(item.status?"Unlike":"Like")+"</button> <br> <br>" + item.description + "</div>"
+                        "<div class='box'>" + item.title + "  <br> <img width=160px src='" + backEndURL + item.image +
+                            "'>  <button style='margin-left:30%' onclick='changeLike(event)' id='img"+item.id+"'>"+(item.status?"Unlike":"Like")+"</button> <br> <br>" + item.description + "</div>"
                     )
         }
 
-        function performLoad() {
+        function resetForm(){
+            $('#title').val('');
+            $('#description').val('');
+            $('#image').val(null)
+        }
 
-            var jqxhr = $.getJSON("http://localhost:8000/api/feed/?page=" + page , function (data) {
+        function resetWrapper(){
+        $('.wrapper').html('');
+        }
+
+        function performLoad() {
+            $.getJSON(backEndURL+ "/api/feed/?page=" + page , function (data) {
                 data.map(x => {
                   appendItem(x);
                 })
@@ -54,16 +63,16 @@
      $('#submitNewImage').click(function (event) {
         var form = document.querySelector('form');
     var formData = new FormData(form);
-     var other_data = $('form').serializeArray();
-      $.each(other_data,function(key,input){
+     var serialized_form = $('form').serializeArray();
+      $.each(serialized_form,function(key,input){
         formData.append(input.name,input.value);
     });
 
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:8000/api/feed/',
+                url: backEndURL+'/api/feed/',
                 data: formData,
-                success: function (data) { appendItem(data) },
+                success: function (data) { resetForm(); page=1; resetWrapper(); performLoad() },
                 processData: false,
                 contentType: false,
             });
